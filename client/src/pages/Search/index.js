@@ -7,6 +7,7 @@ import Input from '../../components/Input'
 import Button from '../../components/Button'
 import Section from '../../components/Section'
 import Result from '../../components/Result'
+import API from '../../utils/API'
 import './style.css'
 
  class Search extends Component{
@@ -15,7 +16,8 @@ import './style.css'
         super()
         
         this.state = {
-            searchQuery: ""
+            searchQuery: "",
+            results: []
         }
     }
 
@@ -27,11 +29,15 @@ import './style.css'
     onSubmit = (event) => {
         event.preventDefault();
         console.log(this.state.searchQuery);
+        API.getGoogleBooks(this.state.searchQuery).then((response)=>{
+            this.setState({results: response.data.items});
+            console.log(response)
+            response.data.items.forEach(element => {
+                console.log(element.volumeInfo.imageLinks)
+            });
+        });
+        
     }
-
-
-
-
 
     render(){
         return (
@@ -58,7 +64,15 @@ import './style.css'
                    <Col col='col-12 my-3 py-3'type='results'>
                         <h5>Results</h5>
                         <hr/>
-                        <Result/>
+                        {this.state.results.map((result)=>{
+                            const data = result.volumeInfo;
+                            return <Result 
+                            title={data.title} 
+                            authors={data.authors.join(', ')} 
+                            link={data.canonicalVolumeLink} 
+                            image={'imageLinks' in data ? data.imageLinks.thumbnail : ''} 
+                            description={data.description || 'NO DESCRIPTION'}/>
+                        })}
                    </Col>
                 </Row>
            </Container>

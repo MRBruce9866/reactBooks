@@ -10,19 +10,18 @@ function Result(props){
             <Row>
                 <Col col='col-6 m-0 p-0 text-left'>
                     <h2>{props.title}</h2>
-                    <h4>{props.subTitle}</h4>
-                    <p>{props.authors}</p>
+                    <h4>{props.authors}</h4>
                 </Col>
                 <Col col='col-6 m-0 p-0 text-right'>
-                    <Button type='button' color='primary' onClick={props.viewClicked}>View</Button>
-                    <Button type='button' color='success' onClick={props.savedClicked}>Save</Button>
+                    <a href={props.link}><Button type='button' color='primary'>View</Button></a>
+                    <Button data-id={props.id} type='button' color='success' onClick={props.savedClicked}>Save</Button>
                 </Col>
             </Row>
             <Row>
-                <Col col='col-3 m-0 p-0 text-left'>
+                <Col col='col-2 m-0 p-0 text-center'>
                     <img src={props.image}/>
                 </Col>
-                <Col col='col-9 m-0 p-0 text-right'>
+                <Col col='col-10 m-0 p-0 text-left'>
                     <p>{props.description}</p>
                 </Col>
             </Row>
