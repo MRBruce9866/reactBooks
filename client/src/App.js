@@ -10,7 +10,7 @@ class App extends Component {
     return (
       <>
       <Router>
-        <Navbar/>
+        <Navbar title='Google Books'/>
         <Switch>
           <Route exact path="/" component={Search} />
           <Route exact path="/search" component={Search} />

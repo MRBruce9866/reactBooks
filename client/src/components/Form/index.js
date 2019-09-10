@@ -1,11 +1,13 @@
 import React from 'react'
 import './style.css'
 
-function Form (){
+function Form (props){
     return (
-        <>
-
-        </>
+        <form>
+        <div className="form-group">
+          {props.children}
+        </div>
+      </form>
     )
 }
 

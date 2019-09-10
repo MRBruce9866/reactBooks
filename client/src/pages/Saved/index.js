@@ -16,7 +16,6 @@ import './style.css'
     render(){
         return (
             <>
-                <div>Saved</div>
             </>
         )
     }

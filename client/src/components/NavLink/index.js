@@ -4,7 +4,7 @@ import './style.css'
 
 function NavLink (props){
     return (
-        <li className="nav-item">
+        <li className={`nav-item`}>
             <Link className="nav-link" {...props}>{props.children}</Link>
         </li>
     )
