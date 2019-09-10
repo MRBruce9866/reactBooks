@@ -28,18 +28,36 @@ import './style.css'
 
     onSubmit = (event) => {
         event.preventDefault();
-        console.log(this.state.searchQuery);
         API.getGoogleBooks(this.state.searchQuery).then((response)=>{
             this.setState({results: response.data.items});
-            console.log(response)
-            response.data.items.forEach(element => {
-                console.log(element.volumeInfo.imageLinks)
-            });
         });
         
     }
+    
+    handleSave = (event) => {
+        const book = this.state.results[event.target.getAttribute('data-index')];
+        this.setState({results: this.state.results.filter((result, i)=>{ return i !== parseInt(event.target.getAttribute('data-index'))})})
+    }
 
     render(){
+
+        let results;
+        if(this.state.results.length > 0){
+            results = this.state.results.map((result, index)=>{
+                const data = result.volumeInfo;
+                return <Result 
+                index = {index}
+                savedClicked={this.handleSave}
+                title={data.title} 
+                authors={data.authors.join(', ')} 
+                link={data.canonicalVolumeLink} 
+                image={'imageLinks' in data ? data.imageLinks.thumbnail : ''} 
+                description={data.description || 'NO DESCRIPTION'}/>
+            })
+        }else{
+            results = <h1>Search for a book to get results</h1>
+        }
+
         return (
            <Container>
                <Row>
@@ -64,15 +82,7 @@ import './style.css'
                    <Col col='col-12 my-3 py-3'type='results'>
                         <h5>Results</h5>
                         <hr/>
-                        {this.state.results.map((result)=>{
-                            const data = result.volumeInfo;
-                            return <Result 
-                            title={data.title} 
-                            authors={data.authors.join(', ')} 
-                            link={data.canonicalVolumeLink} 
-                            image={'imageLinks' in data ? data.imageLinks.thumbnail : ''} 
-                            description={data.description || 'NO DESCRIPTION'}/>
-                        })}
+                       {results}
                    </Col>
                 </Row>
            </Container>
