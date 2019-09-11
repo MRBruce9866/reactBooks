@@ -18,10 +18,10 @@ function Result(props){
                     <a href={props.link}><Button type='button' color='primary'>View</Button></a>
                     <Button index={props.index} type='button' color='success' onClick={props.clickHandler}>{props.buttonText}</Button>
                 </Col>
-                <Col col='col-12 col-md-2 text-center text-md-left'>
+                <Col col='col-12 col-md-3 text-center text-md-left'>
                     <img src={props.image}/>
                 </Col>
-                <Col col='col-12 col-md-10 text-center text-md-left'>
+                <Col col='col-12 col-md-9 text-center text-md-left'>
                     <p>{props.description}</p>
                 </Col>
             </Row>
