@@ -1,14 +1,16 @@
-.myCol-header{    
-    background: #aaa;
-    border: 2px solid black
+.myCol{
+    color: #fff;
+    text-shadow: -1px -1px 5px #000;
+    border-radius: 10px;
+    border: 2px solid black;
+    background: #fff5;
 }
 
-.myCol-search{    
-    background: #aaa;
-    border: 2px solid black
+.myCol-none{
+    border: none;
+    border-radius: 0;
+    margin: 0;
+    padding: 25px;
+    /* background: #0002; */
 }
 
-.myCol-results{    
-    background: #aaa;
-    border: 2px solid black
-}

@@ -61,7 +61,7 @@ import './style.css'
             <Container>
                 <Row>
                     <Col col='col-12 my-3 py-3'type='results'>
-                        <h5>Results</h5>
+                        <h5>Saved</h5>
                         <hr/>
                         {results}
                     </Col>
