@@ -66,7 +66,7 @@ import './style.css'
                 description={data.description || 'NO DESCRIPTION'}/>
             })
         }else{
-            results = <h1>Search for a book to get results</h1>
+            results = <h3 className='text-center'>Search for a book to get results</h3>
         }
 
         return (
