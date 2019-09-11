@@ -14,7 +14,7 @@ function Result(props){
                 </Col>
                 <Col col='col-6 m-0 p-0 text-right'>
                     <a href={props.link}><Button type='button' color='primary'>View</Button></a>
-                    <Button index={props.index} type='button' color='success' onClick={props.savedClicked}>Save</Button>
+                    <Button index={props.index} type='button' color='success' onClick={props.clickHandler}>{props.buttonText}</Button>
                 </Col>
             </Row>
             <Row>

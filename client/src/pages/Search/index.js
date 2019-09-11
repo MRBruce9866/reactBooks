@@ -21,6 +21,7 @@ import './style.css'
         }
     }
 
+    
     onChange = (event) => {
         this.setState({searchQuery: event.target.value})
         
@@ -35,7 +36,16 @@ import './style.css'
     }
     
     handleSave = (event) => {
-        const book = this.state.results[event.target.getAttribute('data-index')];
+        const bookRaw = this.state.results[event.target.getAttribute('data-index')];
+        console.log(bookRaw);
+        const book = {
+            title: bookRaw.volumeInfo.title,
+            authors: bookRaw.volumeInfo.authors,
+            link: bookRaw.volumeInfo.canonicalVolumeLink,
+            image: 'imageLinks' in bookRaw.volumeInfo ? bookRaw.volumeInfo.imageLinks.thumbnail : '',
+            description: bookRaw.volumeInfo.description || 'No Description'
+        }
+        API.saveBook(book);
         this.setState({results: this.state.results.filter((result, i)=>{ return i !== parseInt(event.target.getAttribute('data-index'))})})
     }
 
@@ -47,7 +57,8 @@ import './style.css'
                 const data = result.volumeInfo;
                 return <Result 
                 index = {index}
-                savedClicked={this.handleSave}
+                clickHandler={this.handleSave}
+                buttonText = 'Save'
                 title={data.title} 
                 authors={data.authors.join(', ')} 
                 link={data.canonicalVolumeLink} 
