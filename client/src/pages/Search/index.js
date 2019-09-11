@@ -36,7 +36,7 @@ import './style.css'
     }
     
     handleSave = (event) => {
-        const bookRaw = this.state.results[event.target.getAttribute('data-index')];
+        const bookRaw = this.state.results[parseInt(event.target.getAttribute('data-index'))];
         console.log(bookRaw);
         const book = {
             title: bookRaw.volumeInfo.title,

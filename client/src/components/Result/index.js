@@ -8,20 +8,20 @@ function Result(props){
     return (
         <Section >
             <Row>
-                <Col col='col-6 m-0 p-0 text-left'>
+                <Col col='col-12 col-md-6 my-3 text-center text-md-left'>
                     <h2>{props.title}</h2>
                     <h4>{props.authors}</h4>
                 </Col>
-                <Col col='col-6 m-0 p-0 text-right'>
+                <Col col='col-12 col-md-6 my-3 text-center text-md-right'>
                     <a href={props.link}><Button type='button' color='primary'>View</Button></a>
                     <Button index={props.index} type='button' color='success' onClick={props.clickHandler}>{props.buttonText}</Button>
                 </Col>
             </Row>
             <Row>
-                <Col col='col-2 m-0 p-0 text-center'>
+                <Col col='col-12 col-md-2 text-center text-md-left'>
                     <img src={props.image}/>
                 </Col>
-                <Col col='col-10 m-0 p-0 text-left'>
+                <Col col='col-12 col-md-10 text-center text-md-left'>
                     <p>{props.description}</p>
                 </Col>
             </Row>

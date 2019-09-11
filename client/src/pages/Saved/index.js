@@ -23,6 +23,19 @@ import './style.css'
         })
     }
 
+    handleRemove = (event) =>{
+        const index = parseInt(event.target.getAttribute('data-index'))
+        const book = this.state.booksSaved[index];
+
+        API.deleteBook(book._id).then((response)=>{
+            this.setState({booksSaved: this.state.booksSaved.filter((val, i)=>{
+                return i !== index;
+            })})
+        });
+    }
+
+    
+
     render(){
 
         console.log(this.state.booksSaved);
