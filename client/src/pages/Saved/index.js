@@ -54,7 +54,7 @@ import './style.css'
                 description={result.description}/>
             })
         }else{
-            results = <h1>Search for a book to get results</h1>
+            results = <h3 className='text-center'>There are no saved books</h3>
         }
 
         return (
